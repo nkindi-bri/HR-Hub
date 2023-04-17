@@ -40,7 +40,7 @@ func main() {
 
 	logger.Infof("Connecting to database...")
 
-	db := db.New(config.DB.DNS)
+	db := db.New("postgresql://postgres:nkindi22@127.0.0.1:5432/employees?sslmode=disable")
 
 	if err := db.Open(logger); err != nil {
 		fmt.Println(err)
