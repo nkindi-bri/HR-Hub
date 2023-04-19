@@ -1,9 +1,12 @@
-# fly.toml file generated for employee1 on 2023-04-17T17:06:13+02:00
+# fly.toml app configuration file generated for app-employee on 2023-04-18T15:22:16+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "employee1"
+app = "app-employee"
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "hkg"
+primary_region = "cdg"
 processes = []
 
 [build]
@@ -17,6 +20,8 @@ processes = []
   auto_rollback = true
 
 [[services]]
+  autostart = true
+  autostop = false
   http_checks = []
   internal_port = 8080
   processes = ["app"]
