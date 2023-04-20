@@ -13,7 +13,7 @@ type Result string
 // Paramater defines a query paramater
 type Paramater string
 
-//Int returns the uint64 pointer value
+// Int returns the uint64 pointer value
 func (res Result) Int() (*uint64, error) {
 
 	if res.str() == "" {
@@ -26,12 +26,12 @@ func (res Result) Int() (*uint64, error) {
 	return structure.Uint64Pointer(v), nil
 }
 
-//str returns the string representation of the result
+// str returns the string representation of the result
 func (res Result) str() string {
 	return string(res)
 }
 
-//String returns the string representation of the result
+// String returns the string representation of the result
 func (res Result) String() (*string, error) {
 	if res.str() == "" {
 		return nil, nil
@@ -39,17 +39,17 @@ func (res Result) String() (*string, error) {
 	return structure.StringPointer(res.str()), nil
 }
 
-//Query returns the query paramater value
+// Query returns the query paramater value
 func Query(query Paramater, r *http.Request) Result {
 	return Result(r.URL.Query().Get(query.str()))
 }
 
-//Str returns the string representation of the paramater
+// Str returns the string representation of the paramater
 func (q Paramater) str() string {
 	return string(q)
 }
 
-//Bool returns the bool pointer value
+// Bool returns the bool pointer value
 func (res Result) Bool() (*bool, error) {
 	if res.str() == "" {
 		return nil, nil
@@ -61,7 +61,7 @@ func (res Result) Bool() (*bool, error) {
 	return structure.BoolPointer(v), nil
 }
 
-//QueryError...
+// QueryError...
 func QueryError(param Paramater) error {
 	return fmt.Errorf("invalid data for query parameter '%s'", param)
 }
